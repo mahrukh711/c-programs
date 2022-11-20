@@ -1,0 +1,180 @@
+       //   Define a class MyNum having the following private attributes   
+
+•	A single integer variable.     
+   
+Now do the following operations on above-mentioned class MyNum:   
+  
+•	Write parameterized constructor with default arguments.   
+•	Write separate setters for each attribute to set value.   
+•	Write separate getters for each attribute to get value.   
+•	A function that can convert the number stored in MyNum into positiveNumber. 
+•	A function that can convert the number stored in MyNum into negativeNumber.  
+    
+ 
+Now write a driver program (main()) to test the following functionalities on MyNum class on your own. 
+
+•	Make a single MyNum object by taking data from user.  
+•	Print a single MyNum object data on screen.
+•	Make N MyNum objects by taking data from the user, where N is asked from the user.  
+•	Print N MyNum objects data on screen.
+•	Sort the N MyNum objects by values. 
+•	Print the Sorted MyNum objects on screen.
+ 
+
+
+
+---------------------------------------------------------------------------------------------------------------
+
+
+
+                                        
+
+
+
+
+
+
+
+
+
+
+ main.cpp
+
+#include<iostream>
+#include"MyNUM.h"
+using namespace std;
+int main()
+{
+	int num1;
+	cout << " ENTER THE NUMBER :"; cin >> num1;
+	MyNUM obj(num1);
+	obj.display();
+	cout << " Enter the range of the objects do you want :";
+	int range;
+	cin >> range;
+	MyNUM obj1[100];
+	int value;
+	int array1[1000];
+	int count = 0;
+	for (int i = 0; i < range; i++)
+	{
+
+		cout << " ENETR THE VALUE :"<<i+1<<"   :"; 
+		cin >> value;
+		obj1[i].setvalue(value);
+		array1[i]=obj1[i].getvalue();
+		count++;
+	}
+	cout << "    Your number is   =";
+	for (int i = 0; i < range; i++)
+	{
+		
+		obj1[i].display1();
+		cout << "    ";
+	}
+	cout << endl;
+	MyNUM data(array1, count);
+	//data.display1();
+
+
+
+	system("pause");
+	return 0;
+
+
+
+
+}
+
+
+
+
+                                                                                  header file
+
+
+
+class MyNUM
+{
+private:
+	int num;
+	int *array1 = new int[];
+	int num1;
+public:
+	MyNUM(int);
+	MyNUM();
+
+	MyNUM(int*, int);
+	void setvalue(int);
+	int getvalue();
+	void sortnumber(int*,int);
+	void display1();
+	void display();
+
+
+
+
+
+
+
+
+};
+
+
+
+
+
+
+                                                                                    header.cpp
+
+
+
+
+
+#include<iostream>
+#include"MyNUM.h"
+using namespace std;
+MyNUM::MyNUM()
+{
+	num = 0;
+	num1 = 0;
+}
+MyNUM::MyNUM(int x)
+{
+	num = x;
+}
+void MyNUM::display()
+{
+	cout << "    Your number is   ="<< num << endl;
+}
+void MyNUM :: setvalue(int x)
+{
+	this->num1 = x;
+}
+int MyNUM::getvalue()
+{
+	return num1;
+}
+void MyNUM::display1()
+{
+	cout << num1;
+}
+MyNUM::MyNUM(int *arr,int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		if (arr[i]>0)
+		{
+			cout << "-" << arr[i] << "  ";
+		}
+		if (arr[i] < 0)
+		{
+			cout << "+" << arr[i] << "  ";
+		}
+	}
+}
+
+
+
+
+
+
