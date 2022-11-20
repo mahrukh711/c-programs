@@ -1,0 +1,174 @@
+    
+QUESTION:
+Define a class MyChar having the following private attributes   
+
+•	A single char variable.     
+   
+Now do the following operations on above mentioned class MyChar:   
+  
+•	Write parameterized constructor with default arguments.   
+•	Write separate setters for each attribute to set value.   
+•	Write separate getters for each attribute to get value.   
+•	A function that can convert the number stored in MyChar into upperCase. 
+•	A function that can convert the number stored in MyNum into lowerCase.  
+    
+ 
+Now write a driver program (main()) to test the following functionalities on MyChar class on your own. 
+
+1.	Make a single MyChar object by taking data from user.  
+2.	Print a single MyChar object data on screen.
+2.	Make N MyChar objects by taking data from the user, where N is asked from the user.  
+5.	Print N MyChar objects data on screen.
+6.	Sort the N MyChar objects by ascii. 
+7.	Print the Sorted MyChar objects on screen.
+ 
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------
+
+
+              
+
+
+
+
+
+
+
+
+
+ main.cpp
+
+
+#include<iostream>
+#include"MyChar.h"
+using namespace std;
+int main()
+{
+	char ch;
+	cout << " ENter the character :";
+	cin >> ch;
+	
+	MyChar obj(ch);
+	obj.display();
+	int range;
+	cout << " Enter the range of the object  :";
+	cin >> range;
+	char c;
+	int count = 0;
+	char array1[1000];
+	MyChar obj1[1000];
+	for (int i = 0; i < range; i++)
+	{
+		cout << " Enter the character   :";
+		cin >> c;
+		obj1[i].setvalue(c);
+		array1[i]=obj1[i].getvalue();
+		count++;
+	}
+	for (int i = 0; i < range; i++)
+	{
+		obj1[i].display1();
+	}
+	
+	MyChar data(array1, count);
+
+	
+	
+	
+	
+	
+	
+	system("pause");
+	return 0;
+}
+
+
+ 
+                                     header file
+
+
+
+
+
+class  MyChar
+{
+private :
+	char n;
+	char n1;
+public:
+	MyChar(char);
+	MyChar();
+	MyChar(char*, int);
+	void setvalue(char);
+	char  getvalue();
+	void display();
+	void display1();
+
+};
+
+
+
+                                  header.cpp
+
+
+
+
+
+#include<iostream>
+#include"MyChar.h"
+using namespace std;
+MyChar::MyChar()
+{
+	n = NULL;
+	n1 = NULL;
+}
+MyChar::MyChar(char x)
+{
+	if (x >= 'A'&&x <= 'Z')
+	{
+		n = x + 32;
+	}
+	if (x >= 'a'&& x <= 'z')
+	{
+		n = x - 32 ;
+	}
+}
+void MyChar::display()
+{
+	cout << " YOUR character    :" << n << endl;
+}
+void MyChar :: setvalue(char x)
+{
+	n1 = x;
+
+}
+char MyChar::getvalue()
+{
+	return n1;
+}
+MyChar::MyChar(char *x, int s)
+{
+	for (int i = 0; i < s; i++)
+	{
+		char k = NULL;
+		if (x[i] >= 'A'&&x[i] <= 'Z')
+		{
+			k = x[i] + 32;
+			cout << "  " << k << "  ";
+		}
+		if (x[i] >= 'a'&& x[i] <= 'z')
+		{
+			k = x[i] - 32;
+			cout << "  " << k << "  ";
+		}
+	}
+}
+void MyChar::display1()
+{
+	cout << " YOUR character    :" << n1 << endl;
+}
